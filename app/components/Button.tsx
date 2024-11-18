@@ -15,7 +15,7 @@ type Button = {
 const Button: React.FC<Button> = ({children, danger, disabled, fullWidth, onClick, secondary, type}) => {
   return ( 
     <button 
-      // onClick={onClick}
+      onClick={onClick}
       disabled={disabled}
       type={type}
       className={clsx("flex justify-center rounded-md px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
