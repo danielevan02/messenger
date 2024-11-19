@@ -10,7 +10,7 @@ const useRoutes = () => {
   const {conversationId} = useConversation()
 
   const routes = useMemo(()=>[
-    {label: 'Chat', href: '/conversation', icon: HiChat, active: pathname === '/conversations' || !!conversationId},
+    {label: 'Chat', href: '/conversations', icon: HiChat, active: pathname === '/conversations' || !!conversationId},
     {label: 'Users', href: '/users', icon: HiUsers, active: pathname === '/users'},
     {label: 'Logout', href: '#', onClick: ()=>signOut(), icon: HiArrowLeftOnRectangle}
   ], [pathname, conversationId])
