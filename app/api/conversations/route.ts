@@ -59,7 +59,7 @@ export async function POST (request: Request){
             {id: userId},
             {id: currentUser.id}
           ]
-        }
+        },
       },
       include: {
         user: true
