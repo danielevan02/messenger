@@ -12,7 +12,6 @@ const useActiveChannel = () => {
 
     if (!channel) {
       channel = pusherClient.subscribe('presence-messenger');
-      console.log('berhasil terkonek gedDSDDSDSDSDSSCDVRFVRFV')
       setActiveChannel(channel);
     }
 

@@ -11,6 +11,7 @@ import Input from "../inputs/Input"
 import Image from "next/image"
 import { CldUploadButton } from "next-cloudinary"
 import Button from "../Button"
+import clsx from "clsx"
 
 type SettingsModalProps = {
   isOpen?: boolean
@@ -69,7 +70,11 @@ const SettingsModal: React.FC<SettingsModalProps> = ({currentUser, onClose, isOp
                   </div>
                   
                   <CldUploadButton options={{maxFiles: 1}} onSuccess={handleUpload} uploadPreset="hufuwefa">
-                    <Button disabled={isLoading} secondary type="button" >Change</Button>
+                    <div className={clsx("text-sm rounded-lg bg-sky-500 hover:bg-sky-600 transition text-white py-2 px-3 font-semibold",
+                      isLoading && 'pointer-events-none opacity-30'
+                    )}>
+                      Change
+                    </div>
                   </CldUploadButton>
                 </div>
               </div>
