@@ -1,6 +1,7 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from '@/app/lib/prismadb'
+import { pusherServer } from "@/app/lib/pusher";
 
 export async function POST (request: Request){
   try {
@@ -30,7 +31,14 @@ export async function POST (request: Request){
           user: true
         }
       })
-      return newConversation
+
+      newConversation.user.map((user) => {
+        if(user.email){
+          pusherServer.trigger(user.email, 'conversation:new', newConversation)
+        }
+      })
+
+      return NextResponse.json(newConversation) 
     }
 
     const existingConversations = await prisma.conversation.findMany({
@@ -68,6 +76,7 @@ export async function POST (request: Request){
 
     return NextResponse.json(newConversation)
   } catch (error) {
+    console.log(error, "ERROR_CREATE_CONVERSATION")
     return new NextResponse('Internal Error', {status: 500})
   }
 }
