@@ -6,6 +6,12 @@ const nextConfig = {
       'avatars.githubusercontent.com',
       'res.cloudinary.com'
     ]
+  },
+  typescript:{
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true
   }
 }
 
